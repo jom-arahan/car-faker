@@ -1,7 +1,7 @@
 {
     "name" : "jomari/car-faker",
     "description": "php bundle for generating fake car data",
-    "": ["car faker", "faker", "car"]
+    "": ["car faker", "faker", "car"],
     "license": "GNU",
     "require": {
         "php": ">=5.3.0",
