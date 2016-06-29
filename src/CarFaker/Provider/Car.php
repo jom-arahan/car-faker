@@ -20,7 +20,6 @@ class Car extends Base
 	*/
 	public function carMake()
 	{
-		//return static::randomElement(array_values(array_keys(self::$carData)));
 		return static::randomElement($this->carData->getCarMakes());
 	}
 
@@ -49,7 +48,6 @@ class Car extends Base
 	*/
 	public function carBodyType()
 	{
-		// return static::randomElement(self::$carBodyType);
 		return static::randomElement($this->carData->getCarBodyTypes());
 	}
 
@@ -61,6 +59,9 @@ class Car extends Base
 		return static::randomElement($this->carData->getCarFuelTypes());
 	}
 
+	/**
+	* @example 'Manual'
+	*/
 	public function carTransmissionType()
 	{
 		return static::randomElement($this->carData->getCarTransmissionTypes());
@@ -71,13 +72,10 @@ class Car extends Base
 		$make = static::randomElement($this->carData->getCarMakes());
 		$model = static::randomElement($this->carData->getCarModels($make));
 
-		// var_dump("{$make} {$model}");exit;
 		if($type == self::TYPE_MODEL){
-			// return $fullName ? $make." ".$model : $model;
 			return $fullName ? "{$make} {$model}" : $model;
 		}
 		else if($type == self::TYPE_VARIANT){
-			//$modelArray = static::randomElement($this->carData->getCarModelVariants($make,$model));
 			$variant = static::randomElement($this->carData->getCarModelVariants($make,$model));
 			return $fullName ? "{$make} {$model} {$variant}" : $variant;
 		}

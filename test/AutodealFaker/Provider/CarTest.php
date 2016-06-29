@@ -10,14 +10,11 @@ class CarTest extends \PHPUnit_Framework_TestCase
 
 	public function setUp()
 	{
-		// $faker = new Generator();
-		// $faker->addProvider(new Car($faker));
-		// $this->faker = $faker;
+
 	}
 
 	public function testCarMake()
 	{
-		//$carMake = $this->faker->carMake();
 		$carDataMock = $this->getMock('CarFaker\CarData');
 		$testData = array('car make 1', 'car make 2', 'car make 3');
 		$carDataMock->method('getCarMakes')
@@ -28,12 +25,9 @@ class CarTest extends \PHPUnit_Framework_TestCase
 		
 		$this->assertTrue(in_array($carMake, $testData));
 	}
-	/**
-	* @group test
-	*/
+
 	public function testCarModel()
 	{
-		// $carModel = $this->faker->carModel();
 		$carDataMock = $this->getMock('CarFaker\CarData');
 		$testData = array(
 			'make 1' => array('model 1'),
@@ -55,7 +49,6 @@ class CarTest extends \PHPUnit_Framework_TestCase
 
 	public function testCarModelVariant()
 	{
-		// $carModelVariant = $this->faker->carModelVariant();
 		$carDataMock = $this->getMock('CarFaker\CarData');
 		$testData = array(
 			'make 1' => array(
@@ -100,7 +93,6 @@ class CarTest extends \PHPUnit_Framework_TestCase
 
 	public function testCarBodyType()
 	{
-		// $carBodyType = $this->faker->carBodyType();
 		$carDataMock = $this->getMock('CarFaker\CarData');
 		$testData = array('car body 1', 'car body 2', 'car body 3');
 		$carDataMock->method('getCarBodyTypes')
@@ -114,7 +106,6 @@ class CarTest extends \PHPUnit_Framework_TestCase
 
 	public function testCarFuelType()
 	{
-		// $carFuelType = $this->faker->carFuelType();
 		$carDataMock = $this->getMock('CarFaker\CarData');
 		$testData = array('car fuel 1', 'car fuel 2', 'car fuel 3');
 		$carDataMock->method('getCarFuelTypes')
@@ -128,7 +119,6 @@ class CarTest extends \PHPUnit_Framework_TestCase
 
 	public function testCarTransmissionType()
 	{
-		// $carTransmissionType = $this->faker->carTransmissionType();
 		$carDataMock = $this->getMock('CarFaker\CarData');
 		$testData = array('car transmission 1', 'car transmission 2', 'car transmission 3');
 		$carDataMock->method('getCarTransmissionTypes')
