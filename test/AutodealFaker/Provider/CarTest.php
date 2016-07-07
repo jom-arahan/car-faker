@@ -4,10 +4,10 @@ namespace CarFaker\Test\Provider;
 
 use \PHPUnit_Framework_TestCase;
 use CarFaker\Provider\Car;
+use Faker\Generator;
 
 class CarTest extends \PHPUnit_Framework_TestCase
 {
-
 	public function setUp()
 	{
 
@@ -19,8 +19,8 @@ class CarTest extends \PHPUnit_Framework_TestCase
 		$testData = array('car make 1', 'car make 2', 'car make 3');
 		$carDataMock->method('getCarMakes')
 			->will($this->returnValue($testData));
-
-		$sut = new Car($carDataMock);
+		$generator = new Generator();
+		$sut = new Car($generator, $carDataMock);
 		$carMake = $sut->carMake();
 		
 		$this->assertTrue(in_array($carMake, $testData));
@@ -42,8 +42,8 @@ class CarTest extends \PHPUnit_Framework_TestCase
 			->will($this->returnCallback(function($make) use ($testData){
 				return $testData[$make];
 			}));
-
-		$sut = new Car($carDataMock);
+		$generator = new Generator();
+		$sut = new Car($generator, $carDataMock);
 		$carModel = $sut->carModel(true);
 	}
 
@@ -76,7 +76,8 @@ class CarTest extends \PHPUnit_Framework_TestCase
 				return $testData[$make][$model];
 			}));
 
-		$sut = new Car($carDataMock);
+		$generator = new Generator();
+		$sut = new Car($generator, $carDataMock);
 		$carModelVariant = $sut->carModelVariant(false);
 
 		$variantFound = false;
@@ -98,7 +99,8 @@ class CarTest extends \PHPUnit_Framework_TestCase
 		$carDataMock->method('getCarBodyTypes')
 			->will($this->returnValue($testData));
 
-		$sut = new Car($carDataMock);
+		$generator = new Generator();
+		$sut = new Car($generator, $carDataMock);
 		$carBodyType = $sut->carBodyType();
 		
 		$this->assertTrue(in_array($carBodyType, $testData));
@@ -111,7 +113,8 @@ class CarTest extends \PHPUnit_Framework_TestCase
 		$carDataMock->method('getCarFuelTypes')
 			->will($this->returnValue($testData));
 
-		$sut = new Car($carDataMock);
+		$generator = new Generator();
+		$sut = new Car($generator, $carDataMock);
 		$carFuelType = $sut->carFuelType();
 		
 		$this->assertTrue(in_array($carFuelType, $testData));
@@ -124,7 +127,8 @@ class CarTest extends \PHPUnit_Framework_TestCase
 		$carDataMock->method('getCarTransmissionTypes')
 			->will($this->returnValue($testData));
 
-		$sut = new Car($carDataMock);
+		$generator = new Generator();
+		$sut = new Car($generator, $carDataMock);
 		$carTransmissionType = $sut->carTransmissionType();
 		
 		$this->assertTrue(in_array($carTransmissionType, $testData));

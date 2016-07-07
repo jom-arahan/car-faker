@@ -4,14 +4,16 @@ namespace CarFaker\Provider;
 
 use Faker\Provider\Base;
 use CarFaker\CarData;
+use Faker\Generator;
 
 class Car extends Base
 {
 	const TYPE_MODEL = 1;
 	const TYPE_VARIANT = 2;
 
-	public function __construct(CarData $carData)
+	public function __construct(Generator $generator, CarData $carData)
 	{
+		parent::__construct($generator);
 		$this->carData = $carData;
 	}
 
